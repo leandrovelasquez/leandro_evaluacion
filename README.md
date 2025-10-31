@@ -1,4 +1,4 @@
-
+Link : https://evaluacionleandro.onrender.com/
 1. Umbral ideal: 0.5 como valor base para equilibrio entre sensibilidad y precisión. Puede ajustarse según el costo de falsos negativos/positivos
 2. Factores influyentes (seguro): edad, IMC, hábito de fumar y cantidad de hijos muestran mayor impacto en el costo estimado
 3. Comparativo con RandomForest: confirma relevancia de variables anteriores, útil para importancia de características y relaciones no lineales
