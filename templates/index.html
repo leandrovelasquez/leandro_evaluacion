@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sistema de Predicción</title>
+<style>
+body {font-family: Arial, Helvetica, sans-serif; background-color: #f7f9fc; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0;}
+.container {background:white; width: 420px; padding:28px; border-radius:12px; box-shadow:0 10px 24px rgba(0,0,0,0.08);}
+h2 {margin:0 0 12px 0; color:#1f3b73; font-weight:600; text-align:center; letter-spacing:.2px;}
+small {display:block; color:#5a6b8a; text-align:center; margin-bottom:20px;}
+label {display:block; margin:10px 0 6px; color:#1f3b73; font-size:14px;}
+select, input {width:100%; padding:10px 12px; border:1px solid #d7e2f1; border-radius:8px; font-size:14px; outline:none;}
+button {width:100%; margin-top:18px; padding:10px 14px; background:#2c6ef2; color:white; border:none; border-radius:8px; font-size:15px; cursor:pointer;}
+button:hover {background:#1f5fe0;}
+.hint {font-size:12px; color:#8293b6; margin-top:4px;}
+</style>
+<script>
+function toggleFields() {
+  var m = document.getElementById('modelo').value;
+  document.getElementById('grp_glucosa').style.display = (m==='diabetes') ? 'block' : 'none';
+  document.getElementById('grp_hijos').style.display   = (m==='seguro')   ? 'block' : 'none';
+  document.getElementById('grp_fumador').style.display = (m==='seguro')   ? 'block' : 'none';
+}
+</script>
+</head>
+<body onload="toggleFields()">
+<div class="container">
+  <h2>Sistema de Predicción</h2>
+  <small>Elija el modelo y complete los campos</small>
+  <form method="post">
+    <label>Seleccione el modelo</label>
+    <select name="modelo" id="modelo" onchange="toggleFields()">
+      <option value="diabetes">Predicción de Diabetes</option>
+      <option value="seguro">Predicción de Seguro Médico</option>
+    </select>
+
+    <label>Edad</label>
+    <input type="number" step="any" name="edad" required>
+
+    <label>IMC (BMI)</label>
+    <input type="number" step="any" name="bmi" required>
+
+    <div id="grp_glucosa">
+      <label>Glucosa</label>
+      <input type="number" step="any" name="glucosa">
+      <div class="hint">Solo para el modelo de diabetes</div>
+    </div>
+
+    <div id="grp_hijos">
+      <label>Hijos</label>
+      <input type="number" name="hijos">
+      <div class="hint">Solo para el modelo de seguro</div>
+    </div>
+
+    <div id="grp_fumador">
+      <label>¿Fumador?</label>
+      <select name="fumador">
+        <option value="no">No</option>
+        <option value="sí">Sí</option>
+      </select>
+      <div class="hint">Solo para el modelo de seguro</div>
+    </div>
+
+    <button type="submit">Predecir</button>
+  </form>
+</div>
+</body>
+</html>
